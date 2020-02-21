@@ -4,11 +4,23 @@
 // that code so it'll be compiled.
 
 import 'bootstrap';
+import Siema from 'siema';
+
+
 
 require("@rails/ujs").start()
 require("turbolinks").start()
 require("@rails/activestorage").start()
 require("channels")
+
+document.addEventListener('turbolinks:load', () => {
+  // Call your JS functions here
+  const mySiema = new Siema({
+    duration: 250,
+    loop: true,
+  });
+  setInterval(() => mySiema.next(), 5000)
+});
 
 
 // Uncomment to copy all static images under ../images to the output folder and reference

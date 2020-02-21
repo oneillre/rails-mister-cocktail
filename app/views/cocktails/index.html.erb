@@ -1,39 +1,89 @@
 <div class="banner">
-  <div class="container d-flex justify-content-around">
-    <div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel">
-      <div class="carousel-inner">
-        <div class="carousel-item active">
-          <%= image_tag "mojito.jpg", alt: "alttext", height: 400  %>
-        </div>
-        <div class="carousel-item">
-          <%= image_tag "mojito.jpg", alt: "alttext", height: 400  %>
-        </div>
-        <div class="carousel-item">
-          <%= image_tag "mojito.jpg", alt: "alttext", height: 400  %>
-        </div>
+  <div class="container">
+      <div class="siema">
+        <% @cocktails.each do |cocktail| %>
+          <div class="carousel-item active">
+            <%= link_to cocktail_path(cocktail), style: "text-decoration: none;" do  %>
+              <div class="card-category-carousel" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(<%= cl_image_path cocktail.photo.key %>)">
+                <h1><%= cocktail.name %></h1>
+              </div>
+            <% end %>
+          </div>
+        <% end %>
       </div>
-    </div>
   </div>
+  <div class="banner-header">
+    <h1>Mr. Cocktail: Your online mixologist</h1>
+  </div>
+</div>
+
+<!-- <div class="siema">
+  <% @cocktails.each do |cocktail| %>
+      <%= link_to cocktail_path(cocktail), style: "text-decoration: none;" do  %>
+      <div class="container d-flex justify-content-around">
+          <div class="carousel-item active">
+              <div class="card-category-carousel" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(<%= cl_image_path cocktail.photo.key %>)">
+                <%= cocktail.name %>
+              </div>
+          </div>
+      </div>
+    <% end %>
+  <% end %>
   <h1>Mr. Cocktail: Your online mixologist</h1>
 </div>
 
-<div class="container d-flex justify-content-between">
+<div class="siema">
   <% @cocktails.each do |cocktail| %>
-    <div class="card-index col-3" >
-      <div class="card-index-image d-flex" style="background-image: url(<%= image_path 'mojito.jpg' %>)">
-        <h2><%= cocktail.name %></h2>
+    <%= link_to cocktail_path(cocktail), style: "text-decoration: none;" do  %>
+      <div class="carousel-item active">
+        <div class="card-category-carousel" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(<%= cl_image_path cocktail.photo.key %>)">
+          <%= cocktail.name %>
+        </div>
       </div>
-      <div class="d-flex justify-content-between">
-        <p><%= cocktail.description %></p>
-        <p>3/5</p>
-      </div>
-    </div>
+    <% end %>
   <% end %>
+</div> -->
+
+
+
+
+<!-- <div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel">
+      <div class="carousel-inner">
+        <div class="carousel-item active">
+          <%= link_to cocktail_path(Cocktail.first), style: "text-decoration: none;" do  %>
+            <div class="card-category-carousel" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(<%= cl_image_path Cocktail.first.photo.key %>)">
+              <%= Cocktail.first.name %>
+            </div>
+          <% end %>
+        </div>
+        <div class="carousel-item">
+          <%= link_to cocktail_path(Cocktail.second), style: "text-decoration: none;" do  %>
+            <div class="card-category-carousel" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(<%= cl_image_path Cocktail.second.photo.key %>)">
+              <%= Cocktail.second.name %>
+            </div>
+          <% end %>
+        </div>
+        <div class="carousel-item">
+          <%= link_to cocktail_path(Cocktail.third), style: "text-decoration: none;" do  %>
+            <div class="card-category-carousel" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(<%= cl_image_path Cocktail.third.photo.key %>)">
+              <%= Cocktail.third.name %>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </div> -->
+
+
+<div class="container">
+  <div class="cards">
+    <% @cocktails.each do |cocktail| %>
+      <%= link_to cocktail_path(cocktail) do %>
+        <div class="card-index" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(<%= cl_image_path cocktail.photo.key %>)">
+          <%= cocktail.name %>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
 </div>
 
-<%= cl_image_tag("grmmri29xxqqq0wmp9cv",
-      width: 400, height: 300, crop: :fill) %>
 
-  # <%= link_to "Add a Cocktail", new_cocktail_path %>
-
-<img src="" alt="">
